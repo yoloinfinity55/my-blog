@@ -6,11 +6,37 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/index.css' | url }}">
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans p-8">
-    <div class="max-w-3xl mx-auto">
-        <main class="prose prose-lg">
-            {{ content | safe }}
-        </main>
-    </div>
+
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+
+    <!-- HEADER SECTION -->
+    <header class="bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex justify-between items-center py-4">
+                <!-- Site Title -->
+                <a href="{{ '/' | url }}" class="font-bold text-xl hover:text-blue-600">Yolo Infinity</a>
+
+                <!-- Navigation Links -->
+                <nav class="text-slate-600">
+                    <a href="{{ '/' | url }}" class="hover:text-blue-600">Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+        <div class="max-w-3xl mx-auto py-12 px-6">
+            <article class="prose prose-lg">
+                {{ content | safe }}
+            </article>
+        </div>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="border-t border-slate-200 text-center py-4">
+        <p class="text-slate-500 text-sm">&copy; 2025 Yolo Infinity. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
