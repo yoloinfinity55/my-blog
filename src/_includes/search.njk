@@ -1,0 +1,103 @@
+<div class="relative w-full" id="search-wrapper">
+    <label for="search-input" class="sr-only">Search</label>
+    <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <input type="search" id="search-input" placeholder="Search..." class="block w-full pl-10 pr-3 py-2 border border-slate-300 rounded-md leading-5 bg-white placeholder-slate-500 focus:outline-none focus:placeholder-slate-400 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 sm:text-sm">
+    </div>
+    <div id="search-results" class="absolute z-10 mt-1 w-full bg-white rounded-md shadow-lg max-h-60 overflow-auto hidden">
+        <!-- Search results will be injected here -->
+    </div>
+</div>
+
+<template id="search-result-template">
+    <a href="#" class="block px-4 py-2 text-sm text-slate-700 hover:bg-teal-100">
+        <span class="search-result-title font-medium"></span>
+    </a>
+</template>
+
+<script defer>
+  (async () => {
+    const searchWrapper = document.getElementById('search-wrapper');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const resultTemplate = document.getElementById('search-result-template');
+    let posts = [];
+    let searchIndex;
+    let debounceTimer;
+
+    try {
+      const response = await fetch('{{ "/search.json" | url }}');
+      if (!response.ok) {
+        throw new Error(`Search index fetch failed: ${response.statusText}`);
+      }
+      posts = await response.json();
+      
+      searchIndex = {
+        search: (query) => {
+          if (!query) {
+            return [];
+          }
+          const lowerCaseQuery = query.toLowerCase();
+          return posts.filter(post => {
+            const titleMatch = post.title.toLowerCase().includes(lowerCaseQuery);
+            const contentMatch = post.content.toLowerCase().includes(lowerCaseQuery);
+            return titleMatch || contentMatch;
+          });
+        }
+      };
+
+    } catch (e) {
+      console.error('Could not load search index.', e);
+      if(searchInput) {
+        searchInput.placeholder = 'Search is unavailable.';
+        searchInput.disabled = true;
+      }
+      return;
+    }
+
+    const renderResults = (results, query) => {
+      searchResults.innerHTML = '';
+
+      if (query && results.length > 0) {
+        searchResults.classList.remove('hidden');
+        results.forEach(result => {
+          const templateClone = resultTemplate.content.cloneNode(true);
+          const link = templateClone.querySelector('a');
+          link.href = result.url;
+          const titleEl = templateClone.querySelector('.search-result-title');
+          titleEl.textContent = result.title;
+          searchResults.appendChild(templateClone);
+        });
+      } else if (query) {
+        searchResults.classList.remove('hidden');
+        const li = document.createElement('div');
+        li.textContent = 'No results found.';
+        li.classList.add('text-slate-500', 'px-4', 'py-2');
+        searchResults.appendChild(li);
+      } else {
+        searchResults.classList.add('hidden');
+      }
+    };
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value;
+
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        if (!searchIndex) return;
+        const results = searchIndex.search(query);
+        renderResults(results, query);
+      }, 200);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!searchWrapper.contains(e.target)) {
+            searchResults.classList.add('hidden');
+        }
+    });
+  })();
+</script>

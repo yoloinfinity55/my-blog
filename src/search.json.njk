@@ -1,0 +1,15 @@
+---
+permalink: /search.json
+eleventyExcludeFromCollections: true
+layout: false
+---
+[
+  {%- for post in collections.posts -%}
+    {
+      "url": "{{ post.url | url }}",
+      "title": "{{ post.data.title }}",
+      "content": {{ post.templateContent | striptags | dump | safe }}
+    }
+    {%- if not loop.last -%},{%- endif -%}
+  {%- endfor -%}
+]
