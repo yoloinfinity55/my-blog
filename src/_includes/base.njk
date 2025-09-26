@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ '/assets/css/index.css' | url }}">
 </head>
 
-<body class="flex flex-col min-h-screen bg-white text-slate-800 break-words">
+<body class="flex flex-col min-h-screen bg-white text-slate-800 break-words leading-relaxed">
 
     <header class="bg-white w-full px-6 py-5 z-50 shadow-md">
         <div class="max-w-5xl mx-auto flex items-center flex-wrap justify-between">
@@ -31,7 +31,7 @@
         </div>
     </header>
 
-    <main class="mx-6 mt-8 flex-grow">
+    <main class="max-w-3xl mx-auto mt-8 flex-grow px-6">
         {{ content | safe }}
     </main>
 
