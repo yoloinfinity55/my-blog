@@ -1,2 +1,10 @@
 /* src/assets/css/index.css */
 @import 'tailwindcss';
+
+.prose {
+  @apply leading-loose;
+}
+
+.prose p {
+  @apply mb-8;
+}
