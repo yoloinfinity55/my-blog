@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{{ title }}</title>
+    <meta name="description" content="An awesome blog built with Eleventy and Tailwind CSS.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+
     <link rel="stylesheet" href="{{ '/assets/css/index.css' | url }}">
 </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen bg-white text-slate-800 break-words">
 
-    <!-- HEADER SECTION -->
-    <header class="bg-white border-b border-slate-200">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="flex justify-between items-center py-4">
-                <!-- Site Title -->
-                <a href="{{ '/' | url }}" class="font-bold text-xl hover:text-blue-600">Yolo Infinity</a>
-
-                <!-- Navigation Links -->
-                <nav class="text-slate-600">
-                    <a href="{{ '/' | url }}" class="hover:text-blue-600">Home</a>
-                </nav>
+    <header class="bg-white w-full px-6 py-5 z-50 shadow-md">
+        <div class="max-w-5xl mx-auto flex items-center flex-wrap justify-between">
+            <div>
+                <a href="{{ '/' | url }}">
+                    <span class="text-xl text-teal-700 font-semibold">My Awesome Blog</span>
+                </a>
             </div>
+            <nav class="items-center w-auto flex">
+                <a href="{{ '/' | url }}" class="font-medium text-slate-700 hover:text-teal-600 mr-4">Home</a>
+                {# Add links to About or Tags pages here later #}
+                <a href="https://github.com/yoloinfinity55/my-blog" target="_blank" rel="noopener" class="font-medium text-slate-700 hover:text-teal-600">GitHub</a>
+            </nav>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-grow">
-        <div class="max-w-3xl mx-auto py-12 px-6">
-            <article class="prose prose-lg">
-                {{ content | safe }}
-            </article>
-        </div>
+    <main class="mx-6 mt-8 flex-grow">
+        {{ content | safe }}
     </main>
 
-    <!-- FOOTER SECTION -->
-    <footer class="border-t border-slate-200 text-center py-4">
-        <p class="text-slate-500 text-sm">&copy; 2025 Yolo Infinity. All Rights Reserved.</p>
+    <footer class="mt-20 px-10 py-8 bg-slate-100">
+        <div class="max-w-5xl mx-auto text-slate-700 text-center text-sm">
+            © 2025 Yolo Infinity. Made with 
+            <a href="https://www.11ty.dev" class="font-medium hover:text-teal-600" target="_blank" rel="noopener">Eleventy</a>
+             and 
+            <a href="https://tailwindcss.com" class="font-medium hover:text-teal-600" target="_blank" rel="noopener">Tailwind CSS</a>.
+        </div>
     </footer>
 
 </body>

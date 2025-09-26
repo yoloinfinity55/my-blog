@@ -1,6 +1,9 @@
 ---
 title: My Second Post
-layout: base.njk
+description: "This is my second post, where I will be discussing more interesting topics."
+date: 2025-09-26
+tags:
+  - posts
 ---
 
 ## Another Great Post

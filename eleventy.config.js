@@ -4,6 +4,7 @@ import path from 'path';
 import postcss from 'postcss';
 import tailwindcss from '@tailwindcss/postcss';
 import cssnano from 'cssnano';
+import { DateTime } from 'luxon'; 
 
 // Set the pathPrefix for production builds (your GitHub repo name)
 const pathPrefix = process.env.ELEVENTY_PRODUCTION ? '/my-blog/' : '/';
@@ -31,6 +32,11 @@ export default function (eleventyConfig) {
     fs.mkdirSync(path.dirname(tailwindOutputPath), { recursive: true });
     fs.writeFileSync(tailwindOutputPath, result.css);
   });
+
+    eleventyConfig.addFilter("postDate", (dateObj) => {
+    return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_FULL);
+  });
+
 
   // Tell Eleventy to use the src directory for input and _site for output
   return {
