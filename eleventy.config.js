@@ -37,6 +37,11 @@ export default function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_FULL);
   });
 
+  // Add a custom collection for blog posts
+  eleventyConfig.addCollection("posts", function (collection) {
+    return collection.getFilteredByGlob("src/*.md").filter(item => item.data.tags && item.data.tags.includes("posts"));
+  });
+
   // Copy `src/assets/images` to `_site/assets/images`
   eleventyConfig.addPassthroughCopy("src/assets/images");
 

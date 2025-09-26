@@ -8,8 +8,6 @@ layout: post.njk
 ---
 
 > This is a personal blog built using the Eleventy static site generator and styled with Tailwind CSS. The blog posts are written in Markdown and the site is structured using Nunjucks templates.
->
-> 
 
 ## Core Technologies
 
@@ -20,8 +18,6 @@ Here are the key technologies used in this project:
 *   **Nunjucks:** A templating language for creating layouts.
 *   **PostCSS:** A tool for transforming CSS with JavaScript.
 *   **Luxon:** A library for working with dates and times.
-
-
 
 ## Project Anatomy
 
@@ -37,9 +33,6 @@ The project is organized as follows:
 *   `package.json`: Defines project dependencies and scripts.
 *   `tailwind.config.js`: The configuration file for Tailwind CSS.
 
-
-
-
 ## Getting Started
 
 ### Development
@@ -51,9 +44,6 @@ npm start
 ```
 
 The site will be available at `http://localhost:8080`.
-
-
-
 
 ### Production
 
