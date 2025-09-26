@@ -1,3 +1,12 @@
+---
+title: Project Overview
+description: "This is a personal blog built using the Eleventy static site generator and styled with Tailwind CSS."
+date: 2025-09-27
+tags:
+  - posts
+layout: post.njk
+---
+
 # Project Overview
 
 This is a personal blog built using the Eleventy static site generator and styled with Tailwind CSS. The blog posts are written in Markdown and the site is structured using Nunjucks templates.
