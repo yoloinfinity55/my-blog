@@ -37,6 +37,8 @@ export default function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_FULL);
   });
 
+  // Copy `src/assets/images` to `_site/assets/images`
+  eleventyConfig.addPassthroughCopy("src/assets/images");
 
   // Tell Eleventy to use the src directory for input and _site for output
   return {
