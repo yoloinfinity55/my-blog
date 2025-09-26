@@ -4,6 +4,7 @@ description: "This is my second post, where I will be discussing more interestin
 date: 2025-09-26
 tags:
   - posts
+layout: post.njk
 ---
 
 ## Another Great Post

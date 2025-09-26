@@ -1,0 +1,13 @@
+---
+layout: base.njk
+---
+
+<article class="max-w-3xl mx-auto px-4 py-8">
+    <header class="mb-8 text-center">
+        <h1 class="text-4xl font-bold text-slate-900 mb-4">{{ title }}</h1>
+        <p class="text-slate-600 text-lg">Published on {{ date | postDate }}</p>
+    </header>
+    <div class="prose prose-lg mx-auto">
+        {{ content | safe }}
+    </div>
+</article>

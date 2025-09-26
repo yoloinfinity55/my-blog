@@ -4,6 +4,7 @@ description: "Welcome to my new blog. This site is built with Eleventy and style
 date: 2025-09-25
 tags:
   - posts
+layout: post.njk
 ---
 
 # Hello, World!
