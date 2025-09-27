@@ -17,6 +17,8 @@ html {
 /* Dark mode styles */
 .dark body {
     @apply bg-slate-900 text-slate-200;
+    background-color: #1E1E1E; /* Softer dark background */
+    color: #FFFFFF; /* Brighter text for better readability */
 }
 
 .dark header {
@@ -25,6 +27,7 @@ html {
 
 .dark a {
     @apply text-slate-200;
+    color: #BB86FC; /* Light purple for links */
 }
 
 .dark a:hover {
@@ -39,6 +42,7 @@ html {
     @apply text-teal-400;
 }
 
-.dark footer {
-    @apply bg-slate-800 text-slate-400;
+.dark button {
+    background-color: #3700B3; /* Dark purple for buttons */
+    color: #FFFFFF; /* White text for buttons */
 }
