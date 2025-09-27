@@ -5,6 +5,7 @@ date: 2025-09-25
 tags:
   - posts
 layout: post.njk
+image: /assets/images/default-post-image.png
 ---
 
 # Hello, World!

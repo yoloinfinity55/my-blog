@@ -3,6 +3,7 @@ layout: base.njk
 ---
 
 <article class="max-w-3xl mx-auto px-4 py-8">
+    <img src="{{ image or '/assets/images/default-post-image.png' }}" alt="{{ title }}" class="w-full h-auto rounded-lg mb-8">
     <header class="mb-8 text-center">
         <h1 class="text-4xl font-bold text-slate-900 mb-4">{{ title }}</h1>
         <p class="text-slate-600 text-lg">Published on {{ date | postDate }}</p>

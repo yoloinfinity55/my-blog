@@ -5,6 +5,7 @@ date: 2025-09-26
 tags:
   - posts
 layout: post.njk
+image: /assets/images/default-post-image.png
 ---
 
 ## Another Great Post

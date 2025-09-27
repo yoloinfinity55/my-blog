@@ -5,6 +5,7 @@ date: 2025-09-26
 tags:
   - posts
 layout: post.njk
+image: /assets/images/default-post-image.png
 ---
 This project is a static blog generator built using Eleventy, a simpler static site generator, and styled with Tailwind CSS.
 

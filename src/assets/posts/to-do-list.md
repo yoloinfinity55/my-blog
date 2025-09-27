@@ -5,6 +5,7 @@ date: 2025-09-26
 tags:
   - posts
 layout: post.njk
+image: /assets/images/default-post-image.png
 ---
 Based on my research of your Eleventy blog project, I've analyzed the codebase including the configuration, templates, styling, and content structure. Here are 10 suggestions to improve robustness, styling/beauty, and ease of creating new posts:
 
