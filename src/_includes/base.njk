@@ -58,13 +58,40 @@
     </footer>
 
     <script>
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark')
+        // Function to apply the theme
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
         }
+
+        // Function to toggle the theme
+        function toggleTheme() {
+            const currentTheme = localStorage.getItem('color-theme') === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('color-theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        // Add event listener to the toggle button
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleButton = document.getElementById('theme-toggle');
+            if (themeToggleButton) {
+                themeToggleButton.addEventListener('click', toggleTheme);
+            }
+        });
+
+        // Apply theme on initial load to prevent FOUC
+        (function() {
+            const savedTheme = localStorage.getItem('color-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                applyTheme('dark');
+            } else {
+                applyTheme('light');
+            }
+        })();
     </script>
-    <script src="{{ '/assets/js/theme.js' | url }}"></script>
 </body>
 </html>

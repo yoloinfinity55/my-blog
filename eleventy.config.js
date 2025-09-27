@@ -28,36 +28,9 @@ function copyDirRecursive(src, dest) {
 
 export default function (eleventyConfig) {
   // This event runs before Eleventy builds the site
-  eleventyConfig.on('eleventy.before', async () => {
-    const tailwindInputPath = path.resolve('src/assets/css/index.css');
-    const tailwindOutputPath = '_site/assets/css/index.css';
-    const cssContent = fs.readFileSync(tailwindInputPath, 'utf8');
-
-    // Define the PostCSS plugins
-    const plugins = [
-      tailwindcss(),
-      cssnano({ preset: 'default' })
-    ];
-
-    // Process the CSS
-    const result = await postcss(plugins).process(cssContent, {
-      from: tailwindInputPath,
-      to: tailwindOutputPath,
-    });
-
-    // Write the output CSS file
-    fs.mkdirSync(path.dirname(tailwindOutputPath), { recursive: true });
-    fs.writeFileSync(tailwindOutputPath, result.css);
-  });
-
-  eleventyConfig.on('eleventy.after', async () => {
-    // Copy images
-    const imagesSrc = 'src/assets/images';
-    const imagesDest = '_site/assets/images';
-    if (fs.existsSync(imagesSrc)) {
-      copyDirRecursive(imagesSrc, imagesDest);
-    }
-  });
+  eleventyConfig.addPassthroughCopy("src/assets/css/index.css");
+  eleventyConfig.addPassthroughCopy("src/assets/js/theme.js");
+  eleventyConfig.addPassthroughCopy("src/assets/images");
 
     eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_FULL);
