@@ -1,10 +1,44 @@
 /* src/assets/css/index.css */
 @import 'tailwindcss';
 
+html {
+    -webkit-transition: color 300ms, background-color 300ms;
+    transition: color 300ms, background-color 300ms;
+}
+
 .prose {
   @apply leading-loose;
 }
 
 .prose p {
   @apply mb-8;
+}
+
+/* Dark mode styles */
+.dark body {
+    @apply bg-slate-900 text-slate-200;
+}
+
+.dark header {
+    @apply bg-slate-900 shadow-slate-800;
+}
+
+.dark a {
+    @apply text-slate-200;
+}
+
+.dark a:hover {
+    @apply text-teal-500;
+}
+
+.dark .prose a {
+    @apply text-teal-500;
+}
+
+.dark .prose a:hover {
+    @apply text-teal-400;
+}
+
+.dark footer {
+    @apply bg-slate-800 text-slate-400;
 }
